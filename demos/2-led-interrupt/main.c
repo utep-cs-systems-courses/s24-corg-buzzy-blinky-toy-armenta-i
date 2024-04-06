@@ -14,10 +14,21 @@ int main(void) {
   or_sr(0x18);		/* CPU off, GIE on */
 }
 
+int fstcounter, sndcounter;
 
 void
 __interrupt_vec(WDT_VECTOR) WDT()	/* 250 interrupts/sec */
 {
-  P1OUT |= LED_GREEN;
+  fstcounter++;
+  sndcounter++;
+  if(fstcounter > 20){
+    fstcounter = 0;
+    P1OUT ^= LED_GREEN;
+  }
+  if(sndcounter > 19){
+    sndcounter = 0;
+    P1OUT ^= LED_RED;
+  }
+  
 } 
 

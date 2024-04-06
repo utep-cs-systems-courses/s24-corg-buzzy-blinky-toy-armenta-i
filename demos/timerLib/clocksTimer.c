@@ -1,5 +1,8 @@
+#define bool int
 #include <msp430.h>
 #include "libTimer.h"
+
+
 
 void configureClocks(){
   WDTCTL = WDTPW + WDTHOLD;//Disable Watchdog Timer
