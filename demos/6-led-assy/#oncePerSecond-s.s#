@@ -18,4 +18,4 @@ skip:
 	mov #0, &blinkLimit	;blinkLimit = 0
 	
 end:
-	pop r0
+	ret
