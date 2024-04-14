@@ -92,7 +92,8 @@ __interrupt_vec(WDT_VECTOR) WDT()	/* 250 interrupts/sec */
     }
     break;
   case 3:
-    if(blinkCount >= 250){
+    P1OUT &= ~LEDS;
+    if(blinkCount >= 100){
       blinkCount = 0;
       P1OUT ^= LEDS;
     }
