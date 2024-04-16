@@ -28,3 +28,4 @@
 #define A5  880
 #define A5s 932  // A#5 or Bb5
 #define B5  988
+#define ZR  0

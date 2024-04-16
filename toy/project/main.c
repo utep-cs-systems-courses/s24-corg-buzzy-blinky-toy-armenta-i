@@ -11,7 +11,8 @@ void main(void)
   configureClocks();            /* setup master oscillator, CPU & peripheral clocks */
   enableWDTInterrupts();        /* enable periodic interrupt */
   buzzer_init();
-  green_on();
+  // hard coded led call to let the user know it can be used
+  flash_both(2);
   
   or_sr(0x18);  // CPU off, GIE on
 }

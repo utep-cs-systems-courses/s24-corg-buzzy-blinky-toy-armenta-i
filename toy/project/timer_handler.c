@@ -6,9 +6,10 @@
 void
 __interrupt_vec(WDT_VECTOR) WDT()       /* 250 interrupts/sec */
 {
-  static char blinkCount = 0;
+  static char blinkCount = 1;
   if(++blinkCount >= 250){
-    state_advance();
+    blinkCount = 0;
+    //state_advance();
     //Do something to know time interrupt happened
   }
 }
