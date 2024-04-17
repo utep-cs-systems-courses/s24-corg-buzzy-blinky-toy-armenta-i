@@ -14,7 +14,10 @@ all: button.elf
 button.elf: ${COMMON_OBJECTS} led.o switches.o p1_interrupt_handler.o timer_handler.o buzzer.o stateMachine.o p2_interrupt_handler.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-load: button.elf
+load-c: button.elf
+	msp430loader.sh $^
+
+load-s: button.elf
 	msp430loader.sh $^
 
 clean:

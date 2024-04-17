@@ -28,6 +28,11 @@ void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k resu
 
 void play_song(int *notes, int *lengths, int num_notes) {
     for (int i = 0; i < num_notes; i++) {
+      if((i % 2) == 0){
+	red_on();
+      } else{
+	green_on();
+      }
         buzzer_set_period(1000000 / notes[i]);  // Set frequency using clock cycles
 	int ms = lengths[i];
 	while(ms--){

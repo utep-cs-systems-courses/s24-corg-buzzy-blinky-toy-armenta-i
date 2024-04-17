@@ -69,3 +69,4 @@ Not pressed (bit not set) condition: The result of (p#val & SW#) is zero, which 
     state_advance(5);
   }
 }
+

@@ -12,5 +12,6 @@
 
 void switch_init();
 void switch_interrupt_handler();
+void wdt_init();
 
 #endif // included

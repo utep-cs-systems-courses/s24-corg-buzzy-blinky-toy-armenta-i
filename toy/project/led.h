@@ -7,6 +7,8 @@
 #define LED_GREEN BIT0             // P1.6
 #define LEDS (LED_RED | LED_GREEN)
 
+
+
 void led_init();		/* initialize LEDs */
 void turn_red();
 void turn_green();
