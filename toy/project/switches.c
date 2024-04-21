@@ -3,8 +3,6 @@
 #include "led.h"
 #include "stateMachine.h"
 
-int buttonDown, counter;
-
 void switch_init()               /* setup switches */
 { 
   P1REN |= SW0;		/* enables resistors for SW0 */
@@ -42,11 +40,8 @@ switch_update_interrupt_sense()
 void
 switch_interrupt_handler()
 {
-  char p1val = switch_zero_update_interrupt_sense();            /* switch is in P1 */
+  char p1val = switch_zero_update_interrupt_sense();
   char p2val = switch_update_interrupt_sense();
-  
-  /* Pressed (bit set) condition: The result of (p#val & SW#) is non-zero, which, due to your ternary operation, results in sw_# being set to 0.
-Not pressed (bit not set) condition: The result of (p#val & SW#) is zero, which means the conditional operation will set sw_# to SW#.*/
   char sw_zero = (p1val & SW0) ? 0 : SW0;
   char sw_one = (p2val	& SW1) ? 0 : SW1;
   char sw_two = (p2val	& SW2) ? 0 : SW2;
@@ -68,5 +63,5 @@ Not pressed (bit not set) condition: The result of (p#val & SW#) is zero, which 
   else if(sw_four){
     state_advance(5);
   }
-}
+  }
 

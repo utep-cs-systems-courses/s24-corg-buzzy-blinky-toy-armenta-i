@@ -7,4 +7,5 @@ void turn_green();
 void turn_both();
 void turn_both_off();
 
+extern int state_flag;
 #endif // included

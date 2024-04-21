@@ -10,8 +10,11 @@
 
 #define SWITCHES (SW1 | SW2 | SW3 | SW4)
 
+extern int state_flag;
+
 void switch_init();
 void switch_interrupt_handler();
-void wdt_init();
+char switch_zero_update_interrupt_sense();
+char switch_update_interrupt_sense();
 
 #endif // included

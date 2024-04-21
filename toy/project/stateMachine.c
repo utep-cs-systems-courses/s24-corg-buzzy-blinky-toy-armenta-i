@@ -4,6 +4,8 @@
 #include "buzzer.h"
 #include "stateMachine.h"
 
+int state_flag = 0;
+
 void state_advance(int state){
 
   switch(state){
@@ -19,7 +21,8 @@ void state_advance(int state){
     break;
   case 2:
     // flashes both leds
-    flash_both(30);
+    //flash_both(30);
+    
     jingle_bells();
     turn_both_off();
     __delay_cycles(5000);
