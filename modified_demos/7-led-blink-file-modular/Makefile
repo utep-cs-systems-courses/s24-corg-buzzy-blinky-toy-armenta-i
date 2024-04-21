@@ -1,0 +1,34 @@
+# makfile configuration
+COMMON_OBJECTS  = blinkMain.o
+CPU             = msp430g2553
+CFLAGS          = -mmcu=${CPU} -I../h
+LDFLAGS		= -L/opt/ti/msp430_gcc/include
+
+#switch the compiler (for the internal make rules)
+CC              = msp430-elf-gcc
+AS              = msp430-elf-as
+
+all: blink.elf led_s.elf
+
+#additional rules for files
+blink.elf:	${COMMON_OBJECTS} blinkMain.o stateMachines.o led.o wdInterruptHandler.o
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
+led_s.elf:	${COMMON_OBJECTS} led_s.s
+        ${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ ../lib/libTimer.a
+
+load: blink.elf
+	msp430loader.sh $^
+
+load-s: led_s.elf
+	msp430loader.sh $^
+
+clean:
+	rm -f *.o *.elf
+
+led.o: led.c led.h
+
+wdInterruptHandler.o: stateMachines.h
+
+stateMachines.o: led.h stateMachines.h
+
+led_s.o: led.h

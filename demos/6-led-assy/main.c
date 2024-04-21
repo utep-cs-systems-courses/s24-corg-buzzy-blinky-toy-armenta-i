@@ -29,14 +29,9 @@ void blinkUpdate() // called every 1/250s to blink with duty cycle 1/blinkLimit
 }
 
 //oncePerSecond would go here
-void oncePerSecond() // repeatedly start bright and gradually lower duty cycle, one step/sec
-{
-  blinkLimit ++;  // reduce duty cycle
-  if (blinkLimit >= 8)  // but don't let duty cycle go below 1/7.
-    blinkLimit = 0;
-}
-
 int secondCount = 0;
+
+ 
 void timeAdvStateMachines() // called every 1/250 sec
 {
   blinkUpdate();
