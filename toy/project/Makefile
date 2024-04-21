@@ -24,7 +24,7 @@ load-s: project-s.elf
 	msp430loader.sh $^
 
 clean:
-	rm -f *.o *.elf *.c~ *.h~
+	rm -f *.o *.elf *.c~ *.h~ *~
 
 main.o: led.h switches.h buzzer.h
 
